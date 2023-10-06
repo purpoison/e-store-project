@@ -1,0 +1,35 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--secondary-clr);
+  padding: 2rem;
+  border-radius: 2rem;
+  color: var(--green);
+}
+.cart-item:hover {
+  background-color: rgb(191, 222, 222);
+}
+.cart-item img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+.cart-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: self-start;
+}
+.amount-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.amount-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

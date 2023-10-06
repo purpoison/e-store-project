@@ -1,0 +1,28 @@
+.header {
+  background-color: var(--green);
+  color: var(--primary-clr);
+  padding: 10px 0;
+}
+.header-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  color: var(--primary-clr);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.header-cart-container {
+  position: relative;
+  cursor: pointer;
+}
+.header-cart-amount {
+  background-color: var(--light-green);
+  position: absolute;
+  top: 0;
+  right: -15px;
+  padding: 2px 7px;
+  border-radius: 1rem;
+}

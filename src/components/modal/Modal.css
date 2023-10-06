@@ -1,0 +1,35 @@
+.modal-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-form {
+  background-color: var(--secondary-clr);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 0.5rem;
+  position: relative;
+}
+.modal-wrap input {
+  padding: 0.5rem 0;
+  border: none;
+}
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.close-btn:hover {
+  transform: rotate(50deg);
+}

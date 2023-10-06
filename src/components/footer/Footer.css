@@ -1,0 +1,10 @@
+.footer {
+  background-color: var(--light-green);
+  margin-top: 2rem;
+  padding: 2rem 0 3rem 0;
+  text-align: center;
+  color: var(--primary-clr);
+}
+.copyright {
+  margin-top: 2rem;
+}

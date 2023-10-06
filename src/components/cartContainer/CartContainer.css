@@ -1,0 +1,31 @@
+.cart-container {
+  color: var(--green);
+  height: auto;
+}
+.cart-total {
+  border-top: 2px solid var(--green);
+  padding: 2rem 0;
+  text-align: right;
+}
+.cart-total h4 {
+  text-transform: uppercase;
+}
+.clear-btn {
+  background-color: var(--primary-clr);
+  color: var(--green);
+}
+.clear-btn:hover {
+  color: var(--primary-clr);
+}
+.cart-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-btn button {
+  font-size: 1.5rem;
+}
+.message {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
