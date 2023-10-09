@@ -19,9 +19,8 @@ const productSlice = createSlice({
       productToEdit.price = payload.price;
     },
     addNewProduct: (state, { payload }) => {
-      payload.id =
-        Math.floor(Math.random() * (10000000 - 10000)) +
-        payload.title.replaceAll(" ", "");
+      const currentDay = new Date();
+      payload.id = currentDay.toISOString();
       payload.amount = 1;
       state.productList = [...state.productList, payload];
     },

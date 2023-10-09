@@ -25,7 +25,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<ProductContainer />} />
+          <Route index path="/" element={<ProductContainer />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>

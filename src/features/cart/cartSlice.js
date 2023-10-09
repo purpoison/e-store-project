@@ -11,13 +11,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, { payload }) => {
-      if (!state.cartItems.hasOwnProperty(payload.title)) {
-        state.cartItems = { ...state.cartItems, [payload.title]: payload };
+      if (!state.cartItems.hasOwnProperty(payload.id)) {
+        state.cartItems = { ...state.cartItems, [payload.id]: payload };
       } else {
-        state.cartItems[payload.title].amount += 1;
+        state.cartItems[payload.id].amount += 1;
       }
       let total = 0;
-
       Object.values(state.cartItems).forEach((item) => {
         total += item.amount * item.price;
       });
@@ -46,9 +45,7 @@ const cartSlice = createSlice({
       state.cartItems[payload].amount += 1;
       state.amount++;
       state.total += Number(state.cartItems[payload].price);
-      let fromLocal = JSON.parse(localStorage.getItem("products"));
-      fromLocal[payload].amount++;
-      localStorage.setItem("products", JSON.stringify(fromLocal));
+      localStorage.setItem("products", JSON.stringify(state.cartItems));
     },
     decrease: (state, { payload }) => {
       state.cartItems[payload].amount -= 1;
@@ -66,6 +63,15 @@ const cartSlice = createSlice({
       delete fromLocal[payload];
       localStorage.setItem("products", JSON.stringify(fromLocal));
     },
+    changeItem: (state, { payload }) => {
+      let productToEdit = state.cartItems[payload.id];
+      state.total =
+        state.total - Number(productToEdit.price) + Number(payload.price);
+      productToEdit.title = payload.title;
+      productToEdit.description = payload.description;
+      productToEdit.img = payload.img;
+      productToEdit.price = payload.price;
+    },
   },
 });
 
@@ -77,6 +83,7 @@ export const {
   increase,
   decrease,
   deleteItem,
+  changeItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -5,6 +5,13 @@ import { useDispatch } from "react-redux";
 import { increase, decrease, deleteItem } from "../../features/cart/cartSlice";
 
 const CartItem = (product) => {
+  const decreaseHandler = () => {
+    if (product.amount === 1) {
+      dispatch(deleteItem(product.id));
+    } else {
+      dispatch(decrease(product.id));
+    }
+  };
   const dispatch = useDispatch();
   return (
     <div className="cart-item">
@@ -15,7 +22,7 @@ const CartItem = (product) => {
         <button
           className="btn"
           onClick={() => {
-            dispatch(deleteItem(product.title));
+            dispatch(deleteItem(product.id));
           }}
         >
           <FaRegTrashAlt />
@@ -25,22 +32,13 @@ const CartItem = (product) => {
         <button
           className="amount-btn"
           onClick={() => {
-            dispatch(increase(product.title));
+            dispatch(increase(product.id));
           }}
         >
           <IoIosArrowUp fontSize={"2rem"} color="rgb(0, 113, 113)" />
         </button>
         <p className="amount">{product.amount}</p>
-        <button
-          className="amount-btn"
-          onClick={() => {
-            if (product.amount === 1) {
-              dispatch(deleteItem(product.title));
-            } else {
-              dispatch(decrease(product.title));
-            }
-          }}
-        >
+        <button className="amount-btn" onClick={decreaseHandler}>
           <IoIosArrowDown fontSize={"2rem"} color="rgb(0, 113, 113)" />
         </button>
       </div>

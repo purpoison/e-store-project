@@ -1,13 +1,16 @@
 import "./ProductItem.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import { editProduct } from "../../features/products/productSlice";
+import { changeItem } from "../../features/cart/cartSlice";
 
 const ProductItem = (product) => {
   const dispatch = useDispatch();
   const [isDisabled, setDisabled] = useState(true);
+  const { cartItems, total, amount } = useSelector((store) => store.cart);
+
   const [producValues, setProductValues] = useState({
     title: product.title,
     description: product.description,
@@ -32,6 +35,21 @@ const ProductItem = (product) => {
         price: producValues.price,
       })
     );
+  };
+
+  const saveChangesHandler = () => {
+    if (cartItems.hasOwnProperty(product.id)) {
+      dispatch(
+        changeItem({
+          id: product.id,
+          title: producValues.title,
+          description: producValues.description,
+          img: producValues.img,
+          price: producValues.price,
+        })
+      );
+    }
+    setDisabled(true);
   };
 
   return (
@@ -93,7 +111,7 @@ const ProductItem = (product) => {
           Add to cart
         </button>
       ) : (
-        <button className="btn" type="submit" onClick={() => setDisabled(true)}>
+        <button className="btn" type="submit" onClick={saveChangesHandler}>
           Submit
         </button>
       )}
